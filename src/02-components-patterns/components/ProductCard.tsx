@@ -9,17 +9,20 @@ const { Provider } = ProductContext;
 export interface Props {
     product: Product;
     children?: ReactElement | ReactElement[];
-    className?:string;
+    className?: string;
     style?: CSSProperties;
     onChange?: (arg: onChangeArgs) => void;
-  }
-  
+    value?: number;
+}
 
-export const ProductCard = ({ children, product, className, style, onChange }: Props) => {
+
+export const ProductCard = ({ children, product, className, style, onChange, value }: Props) => {
 
     const { counter, increaseBy } = useProduct({
-        onChange, 
-        product});
+        onChange,
+        product,
+        value
+    });
 
     return (
         <Provider value={{
@@ -27,8 +30,8 @@ export const ProductCard = ({ children, product, className, style, onChange }: P
             increaseBy,
             product
         }}>
-            <div className={`${styles.productCard} ${className}`} 
-                 style={style}>
+            <div className={`${styles.productCard} ${className}`}
+                style={style}>
                 {children}
             </div>
         </Provider>
