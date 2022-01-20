@@ -1,46 +1,12 @@
 import { ProductButtons, ProductImage, ProductTitle } from '../components'
 import { ProductCard } from '../components';
 import '../styles/custom-styles.css';
-import { Product, onChangeArgs } from '../interfaces/interfaces';
-import { useState } from 'react';
-
-const product1 = {
-    id: '1',
-    title: 'Coffee Mug - Card',
-    img: './coffee-mug.png'
-}
-
-const product2 = {
-    id: '2',
-    title: 'Coffee Mug - Meme',
-    img: './coffee-mug2.png'
-}
-
-const products: Product[] = [product1, product2];
-
-
-interface ProductInCart extends Product {
-    count: number
-}
+import { products } from '../data/products';
+import { useShoppingCart } from '../hooks/useShoppingCart';
 
 export const ShoppingPage = () => {
 
-    const [shoppingCart, setShoppingCart] = useState<{ [key: string]: ProductInCart }>({});
-
-    const onProductCartChange = ({ count, product }: onChangeArgs): void => {
-        setShoppingCart(oldShoppingCart => {
-            
-            if (count === 0) {
-                const { [product.id]: toDelete, ...rest } = oldShoppingCart;
-                return rest;
-            }
-
-            return {
-                ...oldShoppingCart,
-                [product.id]: { ...product, count }
-            }
-        });
-    }
+    const {shoppingCart, onProductCartChange} = useShoppingCart();
 
     return (
         <div>
@@ -92,11 +58,11 @@ export const ShoppingPage = () => {
                 }
             </div>
 
-            <div>
+            {/* <div>
                 <code>
                     {JSON.stringify(shoppingCart, null, 5)}
                 </code>
-            </div>
+            </div> */}
 
         </div>
     )
