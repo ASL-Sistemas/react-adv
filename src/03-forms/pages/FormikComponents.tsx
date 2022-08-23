@@ -50,11 +50,11 @@ export const FormikComponents = () => {
 
                             <label htmlFor="lastName">Last Name</label>
                             <Field name='lastName' type='text'/>
-                            <ErrorMessage name='lastName'/>
+                            <ErrorMessage name='lastName' component='span'/>
 
                             <label htmlFor="email">Email Address</label>
                             <Field name='email' type='email'/>
-                            <ErrorMessage name='email'/>
+                            <ErrorMessage name='email' component='span'/>
 
                             <button type='submit'>Submit</button>
                         </Form> 
