@@ -8,6 +8,8 @@ interface FormValues {
     email: string;
 }
 
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
 export const FormikComponents = () => {
 
     return (
@@ -21,7 +23,8 @@ export const FormikComponents = () => {
                     email: ''
                 }}
 
-                onSubmit={(values: FormValues) => {
+                onSubmit={async (values: FormValues) => {
+                    await sleep(500);
                     console.log(values);
 
                 }}
@@ -42,7 +45,7 @@ export const FormikComponents = () => {
             >
 
                 {
-                    formik => (
+                    ({isSubmitting}) => (
                         <Form>
                             <label htmlFor="firstName">First Name</label>
                             <Field name='firstName' type='text'/>
@@ -56,7 +59,7 @@ export const FormikComponents = () => {
                             <Field name='email' type='email'/>
                             <ErrorMessage name='email' component='span'/>
 
-                            <button type='submit'>Submit</button>
+                            <button type='submit' disabled={isSubmitting}>Submit</button>
                         </Form> 
                     )
 
