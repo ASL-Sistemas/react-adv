@@ -2,11 +2,11 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import '../styles/styles.css';
 
-// interface FormValues {
-//     firstName: string;
-//     lastName: string;
-//     email: string;
-// }
+interface FormValues {
+    firstName: string;
+    lastName: string;
+    email: string;
+}
 
 export const FormikComponents = () => {
 
@@ -21,7 +21,7 @@ export const FormikComponents = () => {
                     email: ''
                 }}
 
-                onSubmit={(values) => {
+                onSubmit={(values: FormValues) => {
                     console.log(values);
 
                 }}
