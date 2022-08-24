@@ -1,6 +1,9 @@
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, Form} from 'formik';
 import * as Yup from 'yup';
+import { MySelect, MyTextInput } from '../components';
 import '../styles/styles.css';
+import { MyCheckbox } from '../components/MyCheckbox';
+
 
 interface FormValues {
     firstName: string;
@@ -13,7 +16,7 @@ interface FormValues {
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 const jobTypes: string[] = ['','developer', 'designer', 'it-senior'];
 
-export const FormikComponents = () => {
+export const FormikAbstrataction = () => {
 
     return (
         <div>
@@ -58,33 +61,29 @@ export const FormikComponents = () => {
                 {
                     ({isSubmitting}) => (
                         <Form>
-                            <label htmlFor="firstName">First Name</label>
-                            <Field name='firstName' type='text'/>
-                            <ErrorMessage name='firstName' component='span'/>
+                            <MyTextInput 
+                                label='First Name' 
+                                name='firstName'
+                                placeholder='...'/>
 
-                            <label htmlFor="lastName">Last Name</label>
-                            <Field name='lastName' type='text'/>
-                            <ErrorMessage name='lastName' component='span'/>
+                            <MyTextInput 
+                                label='Last Name' 
+                                name='lastName'/>
 
-                            <label htmlFor="email">Email Address</label>
-                            <Field name='email' type='email'/>
-                            <ErrorMessage name='email' component='span'/>
+                            <MyTextInput 
+                                label='Email Addres' 
+                                name='email' 
+                                type='email'/>
                             
-                            <label>
-                                <Field name='terms' type='checkbox'/>
-                                Terms and conditions
-                            </label>
-                            <ErrorMessage name='terms' component='span'/>
+                            <MyCheckbox label='Terms and conditions' name='terms'/>
 
-                            <label htmlFor="jobType">Job Type</label>
-                            <Field name="jobType" as="select">
+                            <MySelect label='Job Type' name='jobType'>
                                 {
                                     jobTypes.map(type => (
                                         <option key={type} value={type}>{type.toLocaleUpperCase()}</option>
                                     ))
                                 }
-                            </Field>
-                            <ErrorMessage name='jobType' component='span'/>
+                            </MySelect>
                             <button type='submit' disabled={isSubmitting}>Submit</button>
                         </Form> 
                     )
