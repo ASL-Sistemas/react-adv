@@ -1,9 +1,7 @@
 import { Formik, Form} from 'formik';
 import * as Yup from 'yup';
-import { MySelect, MyTextInput } from '../components';
+import { MySelect, MyTextInput, MyCheckbox } from '../components';
 import '../styles/styles.css';
-import { MyCheckbox } from '../components/MyCheckbox';
-
 
 interface FormValues {
     firstName: string;
