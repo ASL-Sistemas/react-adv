@@ -2,9 +2,6 @@ import { Formik, Form } from 'formik';
 import formJson from '../data/custom-forms.json';
 import { MyTextInput, MySelect } from '../components';
 import * as Yup from 'yup';
-//import { FieldConfig } from '../interfaces/FormFields';
-
-//let formData: FieldConfig = JSON.parse(formJson);
 
 const initialValues: { [key: string]: any } = {};
 const requiredFields: { [key: string]: any } = {};
